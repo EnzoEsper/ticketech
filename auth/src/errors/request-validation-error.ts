@@ -1,7 +1,7 @@
 import { ValidationError } from "express-validator";
 
 export class RequestValidationError extends Error {
-  constructor(public error: ValidationError[]) {
+  constructor(public errors: ValidationError[]) {
     super();
 
     // only because we are extending a built in class
