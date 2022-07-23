@@ -1,21 +1,20 @@
 import { CustomError } from "./custom-error";
 
-export class DatabaseConnectionError extends CustomError {
-  statusCode = 500;
-  reason = "Error connecting to database :(";
+export class NotFoundError extends CustomError {
+  statusCode = 404;
 
   constructor() {
     // the string passed to super is only for logs purposes, is never gonna be sent out to users
-    super("Error connecting to database :(");
+    super("Route not found");
 
     // only because we are extending a built in class
-    Object.setPrototypeOf(this, DatabaseConnectionError.prototype);
+    Object.setPrototypeOf(this, NotFoundError.prototype);
   }
 
   serializeErrors() {
     return [
       {
-        message: this.reason,
+        message: "Not Found",
       },
     ];
   }
