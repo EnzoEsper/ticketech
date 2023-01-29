@@ -6,9 +6,16 @@ const AppComponent = ({ Component, pageProps }) => {
 };
 
 AppComponent.getInitialProps = async (appContext) => {
-  console.log("AppComponent.getInitialProps", appContext);
   const client = buildClient(appContext.ctx);
   const { data } = await client.get("/api/users/currentuser");
+
+  // this way we can call getInitialProps on the child component
+  let pageProps = {};
+  if (appContext.Component.getInitialProps) {
+    pageProps = await appContext.Component.getInitialProps(appContext.ctx);
+  }
+
+  console.log(pageProps);
 
   return data;
 };
