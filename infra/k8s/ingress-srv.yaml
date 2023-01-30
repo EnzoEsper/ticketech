@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: ticketech.dev
+    - host: ticketech.com
       http:
         paths:
           - path: /api/users/.*
